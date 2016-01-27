@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="elbeat.app">
+    <head>
+        <base href="/">
+     <!-- CSS -->
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+  <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Home</a>
+                <a class="navbar-brand" href="/singles">Singles</a>
+            </div>      
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li><a href="/"><i class="glyphicon glyphicon-home"></i> {{'Home' | translate}}</a></li>
+                <li><a href="/single/index"><i class="glyphicon glyphicon-film"></i> {{'Singles' | translate}}</a></li>
+                <li><a href="/site/about"><i class="glyphicon glyphicon-tag"></i> {{'Artists' | translate}}</a></li>
+                <li><a href="/site/contact"><i class="glyphicon glyphicon-envelope"></i> {{'Login' | translate}}</a></li>
+                <li><a href="/site/contact"><i class="glyphicon glyphicon-envelope"></i> {{'Logout' | translate}}</a></li>-->
+            </ul>
+        </div>
+    </nav>
+    <div id="main" class="container" ng-view> <!--<h1>{{ 'TITLEq' | translate }}</h1>-->
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-8">
+                </div>
+            </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div>{{$root.name}}</div>
+        </div>
+
+        <!--<table>
+            <tr>
+                <td class="button">
+
+                </td>
+                <td class="image">
+
+                </td>
+                <td class="name">
+
+                </td>
+                <td class="current-time">
+                [{{pizdex}}] {{$scope.playerTime}} + {{$root.player.position | formatTimer}}
+                </td>
+                <td class="seeker">
+
+                </td>
+                <td class="full-time">
+                    {{player.fullTime | formatTimer}}
+                </td>
+                <td class="add">
+
+                </td>
+                <td class="playlist">
+
+                </td>
+            </tr>
+        </table>-->
+        <audio id="player"></audio>
+    </footer>
+     <!-- JS -->
+  <script src="assets/angular/angular.min.js"></script>
+  <script src="assets/jquery/jquery-2.2.0.min.js"></script>
+
+  <script src="assets/angular/angular-route.min.js"></script>
+  <script src="app.js"></script>
+
+  <script src="assets/angular/angular-slugify.js"></script>
+  <script src="assets/js/filters.js"></script>
+
+  <script src="controllers/index.js"></script>
+  <script src="controllers/singles.js"></script>
+
+  <!--
+
+  -->
+  <!--<script src="models/single.js"></script>-->
+
+  <!--<script src="assets/angular/angular-translate.min.js"></script>
+
+
+
+
+
+
+
+
+
+  <!--<script src="models/player.js"></script>-->
+
+
+  <!--<script src="controllers/single.js"></script>-->
+  <!--<script src="controllers/player.js"></script>-->
+  </body>
+</html>

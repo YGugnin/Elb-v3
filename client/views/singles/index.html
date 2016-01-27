@@ -1,0 +1,49 @@
+<div ng-model="Player">
+    <div class="container-fluid" ng-show="singles.length > 0" ng-repeat="single in singles">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="bordered square106">
+                    <a ng-click="$root.play($event);" href="" class="play" data-name="{{single.fullName}}"
+                       data-image="/assets/images/singles/{{single.imgPath}}small.jpg"
+                       data-id="{{single.id}}"
+                       data-lissen="{{single.lissen_link}}"
+                       data-download="{{single.download_link}}">
+                        <img class="square100" src="/assets/images/singles/{{single.imgPath}}middle.jpg" alt="{{single.fullName | escapeHtml}}" />
+                        <span class="play_big"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="/single/{{single.id}}/{{single.fullName | slugify}}" class="btn" type="button"><strong>{{single.artist.name}}</strong> <em>{{single.name}}</em></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <ul class="list-inline">
+                            <li ng-repeat="style in single.singleStyles">
+                                <a class="badge badge-important" href="/single?q=styles={{style.style.id}}">{{style.style.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+
+                        <div class="star_block">
+                            <div class="vote_rating" style="z-index: 0;width:{{single.rate}}%;background: -moz-linear-gradient(top,#{{single.color2}},#{{single.color1}});background: -webkit-gradient(linear, left top, left bottom, from(#{{single.color2}}), to(#{{single.color1}}));filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#{{single.color2}},endColorstr=#{{single.color1}},GradientType=0); zoom: 1;background: linear-gradient(top,#{{single.color2}},#<?php echo $color; ?>);background-color:#{{single.color1}};">
+                                &nbsp;
+                            </div>
+                            <div class="star" data-id="{{single.id}}" data-canvote="1 or 0" data-vote="scores here"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-9">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

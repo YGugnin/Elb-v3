@@ -1,0 +1,17 @@
+RewriteEngine on
+
+Options -MultiViews
+
+### These rules are for protection against cross site request forgery. See bug FV115 ###
+### INSTRUCTION: Modify the RewriteCond values for 'localhost' and '127.0.0.1' to your valid referrer values.
+### Add additional RewriteCond lines as needed. Uncomment to activate.
+##RewriteCond expr "! %{HTTP_REFERER} -strmatch '*://localhost/*'"
+##RewriteCond expr "! %{HTTP_REFERER} -strmatch '*://127.0.0.1/*'"
+##RewriteRule "." "-" [F]
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule . index.php 

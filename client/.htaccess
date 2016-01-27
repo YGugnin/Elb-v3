@@ -1,0 +1,13 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_URI} ^/assets/images/singles/.*\.jpg
+RewriteCond %{REQUEST_URI} !-f
+RewriteRule ^.*$ assets/images/singles/default_image.jpg  [L]
+
+# Don't rewrite files or directories
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Rewrite everything else to index.html to allow html5 state links
+RewriteRule ^ index.html [L]
