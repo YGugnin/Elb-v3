@@ -28,17 +28,7 @@ var app = angular.module('elbeat.app', [
         $locationProvider.html5Mode(true);
     }/*]*/).run(['$rootScope','$location', '$routeParams', function($rootScope, $location, $routeParams){
     //PLAYER ----------------
-
-        $rootScope.player = $('#player');
-        $rootScope.playerNode = $('#player').get(0);
-        $rootScope.name = '';
-
-        $rootScope.play = function($event){
-            $rootScope.name = $($event.currentTarget).data('name');
-            $rootScope.player.attr('src', $($event.currentTarget).data('lissen'));
-            $rootScope.playerNode.play();
-        }
-
+        initPlayer($rootScope);
     //END PLAYER
 
 

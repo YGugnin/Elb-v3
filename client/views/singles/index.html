@@ -4,11 +4,11 @@
             <div class="col-md-2">
                 <div class="bordered square106">
                     <a ng-click="$root.play($event);" href="" class="play" data-name="{{single.fullName}}"
-                       data-image="/assets/images/singles/{{single.imgPath}}small.jpg"
+                       data-image="/assets/images/singles/{{single.imgPath}}/small.jpg"
                        data-id="{{single.id}}"
                        data-lissen="{{single.lissen_link}}"
                        data-download="{{single.download_link}}">
-                        <img class="square100" src="/assets/images/singles/{{single.imgPath}}middle.jpg" alt="{{single.fullName | escapeHtml}}" />
+                        <img class="square100" src="/assets/images/singles/{{single.imgPath}}/middle.jpg" alt="{{single.fullName | escapeHtml}}" />
                         <span class="play_big"></span>
                     </a>
                 </div>
@@ -28,11 +28,11 @@
                         </ul>
                     </div>
                     <div class="col-md-2">
-
                         <div class="star_block">
                             <div class="vote_rating" style="z-index: 0;width:{{single.rate}}%;background: -moz-linear-gradient(top,#{{single.color2}},#{{single.color1}});background: -webkit-gradient(linear, left top, left bottom, from(#{{single.color2}}), to(#{{single.color1}}));filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr=#{{single.color2}},endColorstr=#{{single.color1}},GradientType=0); zoom: 1;background: linear-gradient(top,#{{single.color2}},#<?php echo $color; ?>);background-color:#{{single.color1}};">
                                 &nbsp;
                             </div>
+                            <div class="separator"></div>
                             <div class="star" data-id="{{single.id}}" data-canvote="1 or 0" data-vote="scores here"></div>
                         </div>
                     </div>

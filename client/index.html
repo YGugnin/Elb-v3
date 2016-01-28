@@ -8,21 +8,25 @@
         <link rel="stylesheet" href="assets/css/main.css" />
   </head>
   <body>
-  <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Home</a>
-                <a class="navbar-brand" href="/singles">Singles</a>
-            </div>      
-            <ul class="nav navbar-nav navbar-right">
-                <!--<li><a href="/"><i class="glyphicon glyphicon-home"></i> {{'Home' | translate}}</a></li>
-                <li><a href="/single/index"><i class="glyphicon glyphicon-film"></i> {{'Singles' | translate}}</a></li>
-                <li><a href="/site/about"><i class="glyphicon glyphicon-tag"></i> {{'Artists' | translate}}</a></li>
-                <li><a href="/site/contact"><i class="glyphicon glyphicon-envelope"></i> {{'Login' | translate}}</a></li>
-                <li><a href="/site/contact"><i class="glyphicon glyphicon-envelope"></i> {{'Logout' | translate}}</a></li>-->
-            </ul>
-        </div>
-    </nav>
+      <div class="menu">
+          <div class=" container">
+            <nav>
+
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">Home</a>
+                        <a class="navbar-brand" href="/singles">Singles</a>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <!--<li><a href="/"><i class="glyphicon glyphicon-home"></i> {{'Home' | translate}}</a></li>
+                        <li><a href="/single/index"><i class="glyphicon glyphicon-film"></i> {{'Singles' | translate}}</a></li>
+                        <li><a href="/site/about"><i class="glyphicon glyphicon-tag"></i> {{'Artists' | translate}}</a></li>
+                        <li><a href="/site/contact"><i class="glyphicon glyphicon-envelope"></i> {{'Login' | translate}}</a></li>
+                        <li><a href="/site/contact"><i class="glyphicon glyphicon-envelope"></i> {{'Logout' | translate}}</a></li>-->
+                    </ul>
+
+            </nav>
+          </div>
+      </div>
     <div id="main" class="container" ng-view> <!--<h1>{{ 'TITLEq' | translate }}</h1>-->
             <div class="row">
                 <div class="col-md-4">
@@ -33,8 +37,31 @@
     </div>
 
     <footer>
-        <div class="container">
-            <div>{{$root.name}}</div>
+        <div class="container player">
+            <div>
+                <button ng-click="$root.eventPlayPause();" ng-show="!$root.playerPlayed" type="button" class="btn btn-info btn-circle btn-lg">
+                    <span class="glyphicon glyphicon-play"></span>
+                </button>
+                <button ng-click="$root.eventPlayPause();" ng-show="$root.playerPlayed" type="button" class="btn btn-info btn-circle btn-lg">
+                    <span class="glyphicon glyphicon-pause"></span>
+                </button>
+                <div class="image">
+                    <div class="bordered square52">
+                        <img class="square46" src="{{$root.playerImage}}" alt="{{$root.playerName | escapeHtml}}">
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <button ng-click="$root.eventMuteOnOff();" ng-show="$root.playerMuted" type="button" class="btn btn-info btn-circle btn-lg fs25 right">
+                    <span class="glyphicon glyphicon glyphicon-volume-off"></span>
+                </button>
+                <button ng-click="$root.eventMuteOnOff();" ng-show="!$root.playerMuted" type="button" class="btn btn-info btn-circle btn-lg fs25 right">
+                    <span class="glyphicon glyphicon-volume-up"></span>
+                </button>
+            </div>
+            <div class="bordered center-content">
+                <div>{{$root.playerName}}</div>
+            </div>
         </div>
 
         <!--<table>
@@ -65,20 +92,21 @@
                 </td>
             </tr>
         </table>-->
-        <audio id="player"></audio>
+        <audio id="player" src="{{$root.src}}"></audio>
     </footer>
      <!-- JS -->
-  <script src="assets/angular/angular.min.js"></script>
-  <script src="assets/jquery/jquery-2.2.0.min.js"></script>
+      <script src="assets/angular/angular.min.js"></script>
+      <script src="assets/jquery/jquery-2.2.0.min.js"></script>
 
-  <script src="assets/angular/angular-route.min.js"></script>
-  <script src="app.js"></script>
+      <script src="assets/angular/angular-route.min.js"></script>
+      <script src="app.js"></script>
 
-  <script src="assets/angular/angular-slugify.js"></script>
-  <script src="assets/js/filters.js"></script>
+      <script src="assets/angular/angular-slugify.js"></script>
+      <script src="assets/js/filters.js"></script>
+      <script src="assets/js/player.js"></script>
 
-  <script src="controllers/index.js"></script>
-  <script src="controllers/singles.js"></script>
+      <script src="controllers/index.js"></script>
+      <script src="controllers/singles.js"></script>
 
   <!--
 
