@@ -4,13 +4,8 @@ var serviceBase = 'http://server.local/';
 
 var app = angular.module('elbeat.app', [
     'ngRoute'
+    ,'ngMedia'
     ,'slugifier'
-    ,'elbeat.filters'
-
-
-    ,'elbeat.index'
-    ,'elbeat.singles'
-
 ]).config(/*['$routeProvider', '$locationProvider',*/
     function($routeProvider, $locationProvider) {
         $routeProvider.
@@ -27,10 +22,6 @@ var app = angular.module('elbeat.app', [
             });
         $locationProvider.html5Mode(true);
     }/*]*/).run(['$rootScope','$location', '$routeParams', function($rootScope, $location, $routeParams){
-    //PLAYER ----------------
-        initPlayer($rootScope);
-    //END PLAYER
-
 
     console.log('Current route name: ' + $location.path());
 }]);

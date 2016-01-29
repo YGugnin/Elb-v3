@@ -1,5 +1,6 @@
-'use strict';
-
-    angular.module('elbeat.index', ['ngRoute']).controller('IndexController', ['$scope', '$http', function($scope, $http) {
+(function () {
+    'use strict';
+    angular.module('elbeat.app').controller('IndexController', ['$scope', '$http', function($scope, $http) {
 
     }]);
+})();

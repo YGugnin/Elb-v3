@@ -36,31 +36,49 @@
             </div>
     </div>
 
-    <footer>
+    <footer ng-controller="PlayerController">
         <div class="container player">
             <div>
-                <button ng-click="$root.eventPlayPause();" ng-show="!$root.playerPlayed" type="button" class="btn btn-info btn-circle btn-lg">
+                <button ng-click="player.eventPlayPause();" ng-show="!player.played" type="button" class="btn btn-info btn-circle btn-lg">
                     <span class="glyphicon glyphicon-play"></span>
                 </button>
-                <button ng-click="$root.eventPlayPause();" ng-show="$root.playerPlayed" type="button" class="btn btn-info btn-circle btn-lg">
+                <button ng-click="player.eventPlayPause();" ng-show="player.played" type="button" class="btn btn-info btn-circle btn-lg">
                     <span class="glyphicon glyphicon-pause"></span>
                 </button>
                 <div class="image">
                     <div class="bordered square52">
-                        <img class="square46" src="{{$root.playerImage}}" alt="{{$root.playerName | escapeHtml}}">
+                        <img class="square46" src="{{player.image}}" alt="{{player.name | escapeHtml}}">
                     </div>
                 </div>
             </div>
             <div class="right">
-                <button ng-click="$root.eventMuteOnOff();" ng-show="$root.playerMuted" type="button" class="btn btn-info btn-circle btn-lg fs25 right">
+                <button ng-click="player.eventMuteOnOff();" ng-show="player.muted" type="button" class="btn btn-info btn-circle btn-lg fs25 right">
                     <span class="glyphicon glyphicon glyphicon-volume-off"></span>
                 </button>
-                <button ng-click="$root.eventMuteOnOff();" ng-show="!$root.playerMuted" type="button" class="btn btn-info btn-circle btn-lg fs25 right">
+                <button ng-click="player.eventMuteOnOff();" ng-show="!player.muted" type="button" class="btn btn-info btn-circle btn-lg fs25 right">
                     <span class="glyphicon glyphicon-volume-up"></span>
                 </button>
             </div>
             <div class="bordered center-content">
-                <div>{{$root.playerName}}</div>
+                <div class="time-line" id="time-line">
+                    <div class="buffered" ng-click="player.rewind($event)" style="width: {{player.bufferedPercents}}%">
+                        <div class="current" style="width: {{player.currentTimePercents}}%">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="track-name">
+                    <div class="time">
+                        {{player.currentTime | formatTimer}}
+                    </div>
+                    <div class="name">
+                    </div>
+
+                    <div class="time">
+                        {{player.duration | formatTimer}}
+                    </div>
+                </div>
+                <div>{{player.name}}</div>
             </div>
         </div>
 
@@ -92,21 +110,37 @@
                 </td>
             </tr>
         </table>-->
-        <audio id="player" src="{{$root.src}}"></audio>
+        <audio type="video/ogg" id="player"
+               ng-timeupdate="player.update()"
+               ng-progress="player.update()"
+               src="{{$root.src}}"></audio>
     </footer>
      <!-- JS -->
-      <script src="assets/angular/angular.min.js"></script>
+      <!-- JQuery -->
       <script src="assets/jquery/jquery-2.2.0.min.js"></script>
-
+      <!-- End JQuery -->
+      <!-- Angular-->
+      <script src="assets/angular/angular.min.js"></script>
+      <!-- Standard modules-->
       <script src="assets/angular/angular-route.min.js"></script>
+      <script src="assets/angular/angular-media-events.js"></script>
+      <script src="assets/angular/ui-bootstrap-custom-tpls-1.1.1.min.js"></script>
+      <!-- Init -->
       <script src="app.js"></script>
-
+      <!-- Modules -->
       <script src="assets/angular/angular-slugify.js"></script>
-      <script src="assets/js/filters.js"></script>
-      <script src="assets/js/player.js"></script>
-
+      <!-- Services -->
+      <script src="services/player.js"></script>
+      <!-- Filters -->
+      <script src="filters/format-timer.js"></script>
+      <script src="filters/escape-html.js"></script>
+      <!-- Controllers -->
       <script src="controllers/index.js"></script>
+      <script src="controllers/player.js"></script>
       <script src="controllers/singles.js"></script>
+
+
+      <!-- End Angular-->
 
   <!--
 
