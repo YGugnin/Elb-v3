@@ -37,9 +37,12 @@
     </div>
 
     <footer ng-controller="PlayerController">
+        <div class="volume">
+            <input id="volume" type="text" />
+        </div>
         <div class="container player">
             <div>
-                <button ng-click="player.eventPlayPause();" ng-show="!player.played" type="button" class="btn btn-info btn-circle btn-lg">
+                <button ng-click="player.eventPlayPause();" ng-show="!player.played" type="button" class="btn btn-info btn-circle btn-lg fs25">
                     <span class="glyphicon glyphicon-play"></span>
                 </button>
                 <button ng-click="player.eventPlayPause();" ng-show="player.played" type="button" class="btn btn-info btn-circle btn-lg">
@@ -51,15 +54,27 @@
                     </div>
                 </div>
             </div>
-            <div class="right">
+            <div class="right m5all">
                 <button ng-click="player.eventMuteOnOff();" ng-show="player.muted" type="button" class="btn btn-info btn-circle btn-lg fs25 right">
-                    <span class="glyphicon glyphicon glyphicon-volume-off"></span>
+                    <span class="glyphicon glyphicon-volume-off"></span>
                 </button>
                 <button ng-click="player.eventMuteOnOff();" ng-show="!player.muted" type="button" class="btn btn-info btn-circle btn-lg fs25 right">
                     <span class="glyphicon glyphicon-volume-up"></span>
                 </button>
+                <button type="button" class="btn btn-info btn-circle btn-lg right fs22">
+                    <span class="glyphicon glyphicon-list"></span>
+                </button>
+                <button type="button" class="btn btn-info btn-circle btn-lg right fs24">
+                    <span class="glyphicon glyphicon-option-horizontal"></span>
+                </button>
+                <button type="button" class="btn btn-info btn-circle btn-lg right fs24-2">
+                    <span class="glyphicon glyphicon-floppy-save"></span>
+                </button>
+                <button type="button" class="btn btn-info btn-circle btn-lg right fs26">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                </button>
             </div>
-            <div class="bordered center-content">
+            <div class="center-content">
                 <div class="time-line" id="time-line">
                     <div class="buffered" ng-click="player.rewind($event)" style="width: {{player.bufferedPercents}}%">
                         <div class="current" style="width: {{player.currentTimePercents}}%">
@@ -67,57 +82,39 @@
                         </div>
                     </div>
                 </div>
-                <div class="track-name">
-                    <div class="time">
-                        {{player.currentTime | formatTimer}}
+                <div class="track-info">
+                    <div>
+                        <button ng-click="player.eventPrev();" type="button" class="btn btn-info btn-xs">
+                            <span class="glyphicon glyphicon-fast-backward"></span>
+                        </button>
+                        <button ng-click="player.eventNext();" type="button" class="btn btn-info btn-xs margin-left5">
+                            <span class="glyphicon glyphicon-fast-forward"></span>
+                        </button>
+                        <div class="time">
+                            {{player.currentTime | formatTimer}}
+                        </div>
                     </div>
-                    <div class="name">
-                    </div>
-
-                    <div class="time">
+                    <div class="time right margin-right10">
                         {{player.duration | formatTimer}}
                     </div>
+                    <div class="name" id="marquee-track">
+                        <span>
+                            {{player.name}}
+                        </span>
+                    </div>
                 </div>
-                <div>{{player.name}}</div>
             </div>
         </div>
 
-        <!--<table>
-            <tr>
-                <td class="button">
-
-                </td>
-                <td class="image">
-
-                </td>
-                <td class="name">
-
-                </td>
-                <td class="current-time">
-                [{{pizdex}}] {{$scope.playerTime}} + {{$root.player.position | formatTimer}}
-                </td>
-                <td class="seeker">
-
-                </td>
-                <td class="full-time">
-                    {{player.fullTime | formatTimer}}
-                </td>
-                <td class="add">
-
-                </td>
-                <td class="playlist">
-
-                </td>
-            </tr>
-        </table>-->
-        <audio type="video/ogg" id="player"
+        <audio id="player"
                ng-timeupdate="player.update()"
                ng-progress="player.update()"
-               src="{{$root.src}}"></audio>
+               ></audio>
     </footer>
      <!-- JS -->
       <!-- JQuery -->
       <script src="assets/jquery/jquery-2.2.0.min.js"></script>
+      <script src="assets/jquery/bootstrap-slider.js"></script>
       <!-- End JQuery -->
       <!-- Angular-->
       <script src="assets/angular/angular.min.js"></script>

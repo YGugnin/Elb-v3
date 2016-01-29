@@ -60,5 +60,7 @@
             this.bufferedPercents = this.bufferedPercents > 100 ? 100 : this.bufferedPercents;
             this.currentTimePercents = this.currentTimePercents > 100 ? 100 : this.currentTimePercents;
         }
+
+        $("#volume").slider({min  : 0, max  : 100, value: 0, orientation: 'vertical', tooltip_position:'left', reversed : true});
     });
 })();

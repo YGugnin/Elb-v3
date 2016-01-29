@@ -3,6 +3,9 @@
     angular.module('elbeat.app').filter('formatTimer', function () {
         return function (input) {
             input = parseInt(input);
+            if(isNaN(input)){
+                input = 0;
+            }
             function z(n) {
                 return (n < 10 ? '0' : '') + n;
             }
